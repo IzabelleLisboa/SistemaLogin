@@ -1,4 +1,5 @@
 import static java.lang.Character.isDigit;
+import static java.lang.Character.isLetter;
 import javax.swing.JOptionPane;
 
 /*
@@ -212,8 +213,14 @@ public class FormRegistro extends javax.swing.JFrame {
                 mensagemErro("O campo nif tem"+"de ser númerico e ter 9 digitos");
             }
             if(!validaCampoTexto(nome)){
-                
+                mensagemErro("O campo nome tem "+"que ter mais de 2 caracteres");
             }
+            if(!validaCampoMorada(morada)){
+                mensagemErro("O campo morada tem "+"que ter mais de 5 caracteres");
+            }
+          /*  if(!validaCampoEmail(email)){
+                mensagemErro("O campo morada tem "+"que ter um @ e um . apos o @");
+            }*/
     }//GEN-LAST:event_jButton2ActionPerformed
     }
     
@@ -288,13 +295,54 @@ public class FormRegistro extends javax.swing.JFrame {
         return true;
      }
 
-    private boolean validaCampoTexto(String caracteres) {
-      int cont=0,cr=caracteres.length();
-        if (cr>=2) 
-        
+    private boolean validaCampoTexto(String nome) {
+      int x, contador = 0, n = nome.length();
+        char c = 0;
+        if (n <2)
+            return false;
+        else{
+            for (x = 0; x<n; x++){
+                c = nome.charAt(x);
+                if (isLetter(c))
+                    contador++;
+            }
+            if (n!=contador)
+                return false;
+        }
         return true;
-        return false;
-        
- }
     }
+
+    private boolean validaCampoMorada(String valor) {
+        int x, contador = 0, m = valor.length();
+        char c = 0;
+        if (m<5)
+            return false;
+        else{
+            for (x = 0; x<m; x++){
+                c = valor.charAt(x);
+                if (isLetter(c))
+                    contador++;
+            }
+            if (m!=contador)
+                return false;
+        }
+        return true;
+       
+ }
+
+    /*private boolean validaCampoEmail(String email) {
+        int x, e = email.length();
+         x = email.indexOf('@');
+         if(x==-1){
+        System.out.println("Erro 1");
+         }
+             return false; 
+             
+      
+  }*/
+}  
+
+    
+
+
 
