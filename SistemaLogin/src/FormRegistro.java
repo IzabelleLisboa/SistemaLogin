@@ -218,9 +218,9 @@ public class FormRegistro extends javax.swing.JFrame {
             if(!validaCampoMorada(morada)){
                 mensagemErro("O campo morada tem "+"que ter mais de 5 caracteres");
             }
-          /*  if(!validaCampoEmail(email)){
-                mensagemErro("O campo morada tem "+"que ter um @ e um . apos o @");
-            }*/
+            if(!validaCampoEmail(email)){
+                mensagemErro("O campo email tem "+"que ter um @ e um . apos o @, não pode haver espaços");
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
     }
     
@@ -330,19 +330,18 @@ public class FormRegistro extends javax.swing.JFrame {
        
  }
 
-    /*private boolean validaCampoEmail(String email) {
-        int x, e = email.length();
-         x = email.indexOf('@');
-         if(x==-1){
-        System.out.println("Erro 1");
-         }
-             return false; 
-             
-      
-  }*/
-}  
-
+    private boolean validaCampoEmail(String email) {
+        int  e = email.length() ;
+        if (email.indexOf("@") >= 1 ) {
+        if (email.indexOf(".") >= email.indexOf("@")+2)
+        return true;    
+       if ((email.indexOf("@")+email.indexOf(".") - email.length()) >= 1 )
+         System.out.print("Email reprovado" + (email.length() - (email.indexOf("@")+email.indexOf("."))));
+       }
+        return false; }
+}
     
-
+        
+  
 
 
