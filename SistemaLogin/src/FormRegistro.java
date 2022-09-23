@@ -200,7 +200,9 @@ public class FormRegistro extends javax.swing.JFrame {
         String telefone = ctxTelefone.getText();
         String nif = ctxNif.getText();
         String pass = ctxPassword.getText();
-        String rePass = ctxPassword.getText();
+        String rePass = ctxRePassword.getText();
+        System.out.println("Pass: "+pass);
+        System.out.println("RePass: "+rePass);
         if(nome.equals("")|| email.equals("")|| morada.equals("") ||
                 telefone.equals("")|| nif.equals("")|| pass.equals("")
                 || rePass.equals("")){
@@ -223,6 +225,12 @@ public class FormRegistro extends javax.swing.JFrame {
             }
             if(!validaCampoPass(pass)){
                 mensagemErro("O campo password tem que ter 8 ou + caracteres ou algarismos, 1 ou mais maiusculas ou 1 ou mais caracteres especiais" );
+            }
+           /* if(!pass.equals(rePass)){
+                mensagemErro("As passwords não são iguais");
+            }*/
+            if (!pass.equals(rePass)){
+            mensagemErro("As passawords não coincidem");                                                                                                                                                                                                                                                                                                                                                                                                                                     
             }
     }//GEN-LAST:event_jButton2ActionPerformed
     }
@@ -335,8 +343,8 @@ public class FormRegistro extends javax.swing.JFrame {
 
     private boolean validaCampoEmail(String email) {
         int e = email.length() ;
-        int y;
-        y = email.substring(e+1,email.length()).indexOf("@");
+        /*int y;
+        y = email.substring(e+1,email.length()).indexOf("@");*/
         if (email.indexOf("@") >= 1 ) {
         if (email.indexOf(".") >= email.indexOf("@")+2)
         return true;    
@@ -359,25 +367,17 @@ public class FormRegistro extends javax.swing.JFrame {
             return false;
         }
          if (Character.isDigit(c)) { 
-             nrs++;
-            //boolean numberPresent = true; 
+             nrs++;  
         } 
         if (Character.isUpperCase(c)) { 
             maiusculas++;
-            //boolean upperCasePresent = true; 
         } 
         if (Character.isLowerCase(c)) { 
             minusculas++;
-            //boolean lowerCasePresent = true; 
-        }  
+ }  
         else if (specialChars.contains(String.valueOf(c))) { 
             caract++;
-           // boolean specialCharacterPresent = true; 
         } 
-           /* boolean lowerCasePresent = false;
-            boolean numberPresent = false;
-            boolean specialCharacterPresent = false;
-            boolean upperCasePresent = false;   */
         if(nrs<=1==true && maiusculas<=1==true && minusculas<=1==true && caract<=8==true){ 
          return true;      
      }
