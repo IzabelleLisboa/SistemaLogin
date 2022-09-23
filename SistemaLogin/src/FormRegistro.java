@@ -221,6 +221,9 @@ public class FormRegistro extends javax.swing.JFrame {
             if(!validaCampoEmail(email)){
                 mensagemErro("O campo email tem "+"que ter um @ e um . apos o @, não pode haver espaços");
             }
+            if(!validaCampoPass(pass)){
+                mensagemErro("O campo password tem que ter 8 ou + caracteres ou algarismos, 1 ou mais maiusculas ou 1 ou mais caracteres especiais" );
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
     }
     
@@ -331,17 +334,57 @@ public class FormRegistro extends javax.swing.JFrame {
  }
 
     private boolean validaCampoEmail(String email) {
-        int  e = email.length() ;
+        int e = email.length() ;
+        int y;
+        y = email.substring(e+1,email.length()).indexOf("@");
         if (email.indexOf("@") >= 1 ) {
         if (email.indexOf(".") >= email.indexOf("@")+2)
         return true;    
        if ((email.indexOf("@")+email.indexOf(".") - email.length()) >= 1 )
          System.out.print("Email reprovado" + (email.length() - (email.indexOf("@")+email.indexOf("."))));
        }
-        return false; }
-}
+        return false; 
+    }
+
     
+    private boolean validaCampoPass(String pass) {
+        int x,  p = pass.length() ; 
+        int nrs=0, minusculas=0, maiusculas=0,caract=0;
+        char c;
+        String specialChars = "~`!@#$%^&*()-_=+\\|[{]};:'\",<.>/?"; 
         
+        for (x = 0; x < p; x++) { 
+        c = pass.charAt(x); 
+        if(p<8){ 
+            return false;
+        }
+         if (Character.isDigit(c)) { 
+             nrs++;
+            //boolean numberPresent = true; 
+        } 
+        if (Character.isUpperCase(c)) { 
+            maiusculas++;
+            //boolean upperCasePresent = true; 
+        } 
+        if (Character.isLowerCase(c)) { 
+            minusculas++;
+            //boolean lowerCasePresent = true; 
+        }  
+        else if (specialChars.contains(String.valueOf(c))) { 
+            caract++;
+           // boolean specialCharacterPresent = true; 
+        } 
+           /* boolean lowerCasePresent = false;
+            boolean numberPresent = false;
+            boolean specialCharacterPresent = false;
+            boolean upperCasePresent = false;   */
+        if(nrs<=1==true && maiusculas<=1==true && minusculas<=1==true && caract<=8==true){ 
+         return true;      
+     }
+    }    
+        return false;
+    }
+}
   
 
 
