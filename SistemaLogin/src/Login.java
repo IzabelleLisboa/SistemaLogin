@@ -1,3 +1,6 @@
+
+
+
 public class Login extends javax.swing.JFrame {
 
    
@@ -50,6 +53,11 @@ public class Login extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(102, 102, 102));
         jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Iniciar Sessão");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,6 +113,18 @@ public class Login extends javax.swing.JFrame {
 
     private void ctxLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctxLoginActionPerformed
         // TODO add your handling code here:
+        /*validação através da recolha e comparação de passwrod e login
+        1º verificar se existe ficheiro "login.txt"
+        2º verificar de a password corresponde a pass que está no ficheiro
+        se sim, segue para a JFrame form MenuOpções*/
+        // se login e passaword corretos faz isto que se segue 
+       
+        MenuOpcoes mo = new MenuOpcoes(); 
+        this.setVisible(false);
+        mo.setVisible(true);
+        //senão, lanca um alert de dados de login incorretos
+        
+        
     }//GEN-LAST:event_ctxLoginActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -112,6 +132,10 @@ public class Login extends javax.swing.JFrame {
       this.setVisible(false);
       fr.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
     public static void main(String args[]) {
