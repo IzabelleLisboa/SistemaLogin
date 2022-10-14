@@ -134,9 +134,9 @@ public class MenuOpcoes extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         //Eliminar Utilizadores
-        
-        File ficheiro = new File (Login.Login+".txt");
-      if(!ficheiro.exists()){
+        String log = Login.nomeUser;
+        File ficheiro = new File (log+".txt");
+      if(ficheiro.exists()){
           ficheiro.delete();
           FormRegistro.mensagemErro("O Login não existe!!");
       }else{
@@ -149,8 +149,32 @@ public class MenuOpcoes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         //Visualizar Dados utilizador
+           String log = Login.nomeUser;
            
+      File ficheiro = new File (log);
+      if(!ficheiro.exists()){
+          System.out.println(" ficheiro não existe");
+      }else{
+          try {
 
+                FileReader fr = new FileReader(log+".txt");
+                BufferedReader br = new BufferedReader(fr);
+                while(br.ready()){
+                    String linha = br.readLine();
+                    System.out.println(linha);
+                }
+                br.close();
+                fr.close();
+              
+          } catch (FileNotFoundException ex){
+              ex.printStackTrace();
+          
+          } catch (IOException ex) {
+              ex.printStackTrace();
+
+      }
+     
+  }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
