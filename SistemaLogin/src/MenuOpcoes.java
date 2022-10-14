@@ -147,32 +147,26 @@ public class MenuOpcoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     public static Scanner ler = new Scanner(System.in);
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        //Visualizar Dados utilizador
-           String log = Login.nomeUser;
-           
-      File ficheiro = new File (log);
-      if(!ficheiro.exists()){
-          System.out.println(" ficheiro não existe");
-      }else{
-          try {
-
-                FileReader fr = new FileReader(log+".txt");
-                BufferedReader br = new BufferedReader(fr);
-                while(br.ready()){
-                    String linha = br.readLine();
-                    System.out.println(linha);
+       System.out.println("Insira o nome de utilizador a verificar :");
+        String login = Login.ler.nextLine();
+        File ficheiro = new File (login +".txt");
+        if(!ficheiro.exists()){
+            System.out.println("O utilizador não existe");
+        }else{     
+            try{
+                FileReader fr = new FileReader (ficheiro);
+                BufferedReader br = new BufferedReader (fr);
+                while (br.ready()){
+                    String linha = br.readLine ();
+                    System.out.println (linha);
                 }
                 br.close();
-                fr.close();
-              
-          } catch (FileNotFoundException ex){
-              ex.printStackTrace();
-          
-          } catch (IOException ex) {
-              ex.printStackTrace();
-
-      }
+                br.close();
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            } catch (IOException ioe) {
+                
+            }
      
   }
     }//GEN-LAST:event_jButton3ActionPerformed

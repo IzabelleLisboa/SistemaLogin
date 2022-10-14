@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import java.util.logging.Logger;
 
 public class Login extends javax.swing.JFrame {
 
+    public static Scanner ler = new Scanner(System.in);
    public static String nomeUser;
     public Login() {
         initComponents();
