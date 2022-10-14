@@ -1,9 +1,18 @@
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 
 
 public class Login extends javax.swing.JFrame {
 
-   
+   public static String nomeUser;
     public Login() {
         initComponents();
     }
@@ -134,7 +143,60 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        FileReader fr = null;
+        
+            // TODO add your handling code here:
+            //comprar a password
+            String pass = ctxPassword.getText();
+            nomeUser = ctxLogin.getText();
+            
+            if(pass.equals("")||nomeUser.equals("")){
+                FormRegistro.mensagemErro("Preencha os campos de login");
+            }
+            else{
+                
+            try {
+
+//ler ficheiro
+            
+          File ficheiro = new File (nomeUser+".txt");
+      if(!ficheiro.exists()){
+          FormRegistro.mensagemErro("O Login não existe!!");
+          
+      }else{
+          fr = new FileReader(nomeUser+".txt");
+            BufferedReader br = new BufferedReader(fr);
+            while(br.ready()){
+                String linha = br.readLine();
+                
+                if (linha.equals(pass)){
+                    MenuOpcoes mo = new MenuOpcoes();
+                    this.setVisible(false);
+                    mo.setVisible(true);
+                    break;
+                }else{
+                    FormRegistro.mensagemErro("O Login não existe!!");
+                }
+                br.close();
+                fr.close();
+        
+            }
+      }
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                fr.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        }
+            
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     
@@ -176,4 +238,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
+
+   
 }

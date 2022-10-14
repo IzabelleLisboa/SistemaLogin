@@ -214,7 +214,7 @@ public class FormRegistro extends javax.swing.JFrame {
         log.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
     
-    private void mensagemErro(String erro){ 
+    public static void mensagemErro(String erro){ 
         JOptionPane.showMessageDialog(null,erro," Erro validação",JOptionPane.ERROR_MESSAGE);
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -226,6 +226,7 @@ public class FormRegistro extends javax.swing.JFrame {
         String pass = ctxPassword.getText();
         String rePass = ctxRePassword.getText();
         String nomeUser = ctxLogin2.getText();
+   
         //System.out.println("Pass: "+pass);
         //System.out.println("RePass: "+rePass);
         if(nome.equals("")|| email.equals("")|| morada.equals("") ||
@@ -259,35 +260,40 @@ public class FormRegistro extends javax.swing.JFrame {
             }
             //*****************Codigo valida user***************************
             {
-          
-          File ficheiro = new File (nomeUser + ".txt");
-            if(!ficheiro.exists()){
-            try {
-                ficheiro.createNewFile();
-            
-           FileWriter fw = new FileWriter(ficheiro);
-           BufferedWriter bw = new BufferedWriter(fw);
-           bw.write("Senha: " + pass);
-                bw.newLine();
-                bw.write("Nome: " + nome);
-                bw.newLine();
-                bw.write("E-mail: " + email);
-                bw.newLine();
-                bw.write("Morada: "+ morada);
-                bw.newLine();
-                bw.write("Nº NIF: " + nif);
-                bw.newLine();
-                
-                bw.write("Nº Tel: " + telefone);
-                bw.newLine();
-                bw.close();
-                fw.close();
-            } catch (IOException ex) {
-                ex.printStackTrace();
-                 }
-        }              
-         
-       }  
+
+                    File ficheiro = new File (nomeUser + ".txt");
+                      if(!ficheiro.exists()){
+                      try {
+                          ficheiro.createNewFile();
+
+                     FileWriter fw = new FileWriter(ficheiro);
+                     BufferedWriter bw = new BufferedWriter(fw);
+                     bw.write(pass);
+                          bw.newLine();
+                          bw.write( nome);
+                          bw.newLine();
+                          bw.write( email);
+                          bw.newLine();
+                          bw.write(morada);
+                          bw.newLine();
+                          bw.write( nif);
+                          bw.newLine();
+                          bw.write( nomeUser);
+                          bw.newLine();
+                          bw.write(telefone);
+                          bw.newLine();
+                          bw.close();
+                          fw.close();
+                      } catch (IOException ex) {
+                          ex.printStackTrace();
+                           }
+       //2º verificar de a password corresponde a pass que está no ficheiro
+       // se sim, segue para a JFrame form MenuOpções
+       // se login e passaword corretos faz isto que se segue    
+       
+                       
+           }                           
+        }  
             
       }
     }//GEN-LAST:event_jButton2ActionPerformed
