@@ -1,7 +1,7 @@
-Senha: Xpto@@xpto123
-Nome: xpto
-E-mail: xptoxpto@gmail.com
-Morada:  ruaalegriatesteteste
-Nº NIF: 123456789
-Login: xptoxpto
-Nº Tel: 123456789
+Xpto@@xpto123
+ xpto
+ xptoxpto@gmail.com
+ ruaalegriatesteteste
+123456789
+xptoxpto
+123456789
