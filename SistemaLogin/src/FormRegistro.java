@@ -5,7 +5,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.Character.isDigit;
 import static java.lang.Character.isLetter;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /*
@@ -258,14 +261,30 @@ public class FormRegistro extends javax.swing.JFrame {
             if (!pass.equals(rePass)){
             mensagemErro("As passawords não coincidem");                                                                                                                                                                                                                                                                                                                                                                                                                                     
             }
+            
+            
+           Integer.parseInt(telefone);
+           Integer.parseInt(nif);
+            try {
+                LigaBD.registraUtilizador(nome, email, morada, Integer.parseInt(telefone), Integer.parseInt(nif), nomeUser, pass);
+            } catch (SQLException ex) {
+                Logger.getLogger(FormRegistro.class.getName()).log(Level.SEVERE, null, ex);
+            }
+          
+
+
+
+            
             //*****************Codigo valida user***************************
             {
 
                     File ficheiro = new File (nomeUser + ".txt");
+                    
+                   
                       if(!ficheiro.exists()){
                       try {
                           ficheiro.createNewFile();
-
+                  
                      FileWriter fw = new FileWriter(ficheiro);
                      BufferedWriter bw = new BufferedWriter(fw);
                           bw.write(pass);
