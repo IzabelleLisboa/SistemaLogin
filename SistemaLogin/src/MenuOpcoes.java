@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -175,11 +178,15 @@ public class MenuOpcoes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        //Editar dados utilizador
-        EditarDados fr = new EditarDados();
-        this.setVisible(false);
-        fr.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            //Editar dados utilizador
+            EditarDados fr = new EditarDados();
+            this.setVisible(false);
+            fr.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuOpcoes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_jButton5ActionPerformed
 

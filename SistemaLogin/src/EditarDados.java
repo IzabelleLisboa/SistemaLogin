@@ -1,4 +1,5 @@
 
+//import static LigaBD.ligacao;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,6 +9,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import static java.lang.Character.isDigit;
 import static java.lang.Character.isLetter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -26,7 +31,7 @@ public class EditarDados extends javax.swing.JFrame {
     /**
      * Creates new form EditarDados
      */
-    public EditarDados() {
+    public EditarDados() throws SQLException {
         initComponents();
         try {
             preencheFormulario();
@@ -49,7 +54,7 @@ public class EditarDados extends javax.swing.JFrame {
         editRePass = new javax.swing.JLabel();
         editLogin = new javax.swing.JLabel();
         ctxEditRePassword = new javax.swing.JPasswordField();
-        ctxEditLogin2 = new javax.swing.JTextField();
+        ctxnomeUser = new javax.swing.JTextField();
         ctxEditPassword = new javax.swing.JPasswordField();
         ctxEditNome = new javax.swing.JTextField();
         ctxEditTelefone = new javax.swing.JTextField();
@@ -75,9 +80,9 @@ public class EditarDados extends javax.swing.JFrame {
         editLogin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         editLogin.setText("Login");
 
-        ctxEditLogin2.addActionListener(new java.awt.event.ActionListener() {
+        ctxnomeUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ctxEditLogin2ActionPerformed(evt);
+                ctxnomeUserActionPerformed(evt);
             }
         });
 
@@ -122,7 +127,7 @@ public class EditarDados extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 149, Short.MAX_VALUE)
+                .addGap(149, 149, 149)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -159,7 +164,7 @@ public class EditarDados extends javax.swing.JFrame {
                                         .addComponent(editLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(89, 89, 89)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ctxEditLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ctxnomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(ctxEditNif)
                                         .addComponent(ctxEditPassword)
@@ -200,7 +205,7 @@ public class EditarDados extends javax.swing.JFrame {
                         .addComponent(ctxEditNif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ctxEditLogin2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ctxnomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(editLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,9 +227,9 @@ public class EditarDados extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ctxEditLogin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctxEditLogin2ActionPerformed
+    private void ctxnomeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctxnomeUserActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ctxEditLogin2ActionPerformed
+    }//GEN-LAST:event_ctxnomeUserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Login log = new Login();
@@ -244,7 +249,7 @@ public class EditarDados extends javax.swing.JFrame {
         String nif = ctxEditNif.getText();
         String pass = ctxEditPassword.getText();
         String rePass = ctxEditRePassword.getText();
-        String nomeUser = ctxEditLogin2.getText();
+        String nomeUser = ctxnomeUser.getText();
 
         if(nome.equals("")|| email.equals("")|| morada.equals("") ||
             telefone.equals("")|| nif.equals("")|| pass.equals("")
@@ -309,6 +314,9 @@ public class EditarDados extends javax.swing.JFrame {
             }
 
         }
+       LigaBD.atualizaUtilizador(nome,morada,email,telefone,nif,pass);
+
+  
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -341,20 +349,24 @@ public class EditarDados extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EditarDados().setVisible(true);
+                try {
+                    new EditarDados().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(EditarDados.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ctxEditEmail;
-    private javax.swing.JTextField ctxEditLogin2;
     private javax.swing.JTextField ctxEditMorada;
     private javax.swing.JTextField ctxEditNif;
     private javax.swing.JTextField ctxEditNome;
     private javax.swing.JPasswordField ctxEditPassword;
     private javax.swing.JPasswordField ctxEditRePassword;
     private javax.swing.JTextField ctxEditTelefone;
+    private javax.swing.JTextField ctxnomeUser;
     private javax.swing.JLabel editEmail;
     private javax.swing.JLabel editLogin;
     private javax.swing.JLabel editMorada;
@@ -464,8 +476,27 @@ private boolean validaCampoNumerico(String valor) {
         return false;
     }
 
-    private void preencheFormulario() throws FileNotFoundException {
-    int cont=0;
+    private void preencheFormulario() throws FileNotFoundException, SQLException {
+    Connection conn=LigaBD.ligacao();
+    String sql = "SELECT * FROM utilizador WHERE login ='"+ Login.nomeUser+"'";
+    PreparedStatement ps = conn.prepareStatement(sql);
+    ps = conn.prepareStatement(sql);   ResultSet rs= ps.executeQuery();
+    while (rs.next()){
+        ctxEditNome.setText(rs.getString(2));
+        ctxEditEmail.setText(rs.getString(3));
+        ctxEditMorada.setText(rs.getString(4));
+        ctxEditTelefone.setText(""+rs.getInt("telefone"));
+        ctxEditNif.setText(""+rs.getInt("nif"));
+        ctxnomeUser.setText(rs.getString(7));
+        ctxEditPassword.setText(rs.getString(8));
+        
+
+       
+    }
+    
+    
+    
+  /*  int cont=0;
     String[]lista = new String[7];
     String log = Login.nomeUser;
     FileReader fr = new FileReader(log + ".txt");
@@ -483,7 +514,7 @@ private boolean validaCampoNumerico(String valor) {
     ctxEditMorada.setText(lista[3]);
     ctxEditNif.setText(lista[4]);
     ctxEditLogin2.setText(lista[5]);
-    ctxEditTelefone.setText(lista[6]);
+    ctxEditTelefone.setText(lista[6]);*/
     }
 }
 

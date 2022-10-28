@@ -36,5 +36,34 @@ public class LigaBD {
         ps.setString(7, password);
         ps.execute();      
     }
+
+    static void atualizaUtilizador(String nome, String morada, String email, String telefone, String nif, String pass) {
+       
+      String sql = "UPDATE utilizador SET nome=?, email=?, morada=?, telefone=?, nif=?,  password=? WHERE login=?";
+    Connection conn=LigaBD.ligacao();
+    PreparedStatement ps;
+        try {
+            ps = conn.prepareStatement(sql);
+            ps=conn.prepareStatement(sql);
+    ps.setString(1, nome);
+    ps.setString(2, email);
+    ps.setString(3,morada);
+    ps.setInt(4, Integer.parseInt(telefone));
+    ps.setInt(5, Integer.parseInt(nif));
+    ps.setString(6,pass);
+     ps.setString(7,Login.nomeUser);  
+    //Executa a instrução
+    int retorno = ps.executeUpdate();
+    if(retorno > 0){
+    System.out.printf("Novo registro alterado: ");
+    }else{
+    System.out.println("Não foi possível alterar os registros!");
+    }
+    
+        } catch (SQLException ex) {
+            Logger.getLogger(LigaBD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
    
 }

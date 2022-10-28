@@ -24,7 +24,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="0" pref="149" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="jButton2" min="-2" pref="153" max="-2" attributes="0"/>
@@ -72,7 +72,7 @@
                                   </Group>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="ctxEditLogin2" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
+                                  <Component id="ctxnomeUser" alignment="0" min="-2" pref="163" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="ctxEditNif" alignment="0" max="32767" attributes="0"/>
                                       <Component id="ctxEditPassword" alignment="0" max="32767" attributes="0"/>
@@ -129,7 +129,7 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ctxEditLogin2" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="ctxnomeUser" alignment="3" min="-2" pref="24" max="-2" attributes="0"/>
                   <Component id="editLogin" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -184,9 +184,9 @@
     </Component>
     <Component class="javax.swing.JPasswordField" name="ctxEditRePassword">
     </Component>
-    <Component class="javax.swing.JTextField" name="ctxEditLogin2">
+    <Component class="javax.swing.JTextField" name="ctxnomeUser">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ctxEditLogin2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ctxnomeUserActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="ctxEditPassword">

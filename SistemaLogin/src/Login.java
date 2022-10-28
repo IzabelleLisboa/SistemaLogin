@@ -26,7 +26,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        ctxLogin = new javax.swing.JTextField();
+        ctxnomeUser = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         ctxPassword = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
@@ -41,10 +41,10 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setText("PASSWORD");
 
-        ctxLogin.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        ctxLogin.addActionListener(new java.awt.event.ActionListener() {
+        ctxnomeUser.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        ctxnomeUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ctxLoginActionPerformed(evt);
+                ctxnomeUserActionPerformed(evt);
             }
         });
 
@@ -90,7 +90,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ctxLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ctxnomeUser, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(171, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,7 +101,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(0, 70, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ctxLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
+                            .addComponent(ctxnomeUser, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE))
                         .addGap(117, 117, 117))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -120,7 +120,7 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ctxLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctxLoginActionPerformed
+    private void ctxnomeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ctxnomeUserActionPerformed
         // TODO add your handling code here:
         /*validação através da recolha e comparação de passwrod e login
         1º verificar se existe ficheiro "login.txt"
@@ -134,7 +134,7 @@ public class Login extends javax.swing.JFrame {
         //senão, lanca um alert de dados de login incorretos
         
         
-    }//GEN-LAST:event_ctxLoginActionPerformed
+    }//GEN-LAST:event_ctxnomeUserActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       FormRegistro fr = new FormRegistro();
@@ -148,7 +148,7 @@ public class Login extends javax.swing.JFrame {
             // TODO add your handling code here:
             //comprar a password
             String pass = ctxPassword.getText();
-            nomeUser = ctxLogin.getText();
+            nomeUser = ctxnomeUser.getText();
             
             if(pass.equals("")||nomeUser.equals("")){
                 FormRegistro.mensagemErro("Preencha os campos de login");
@@ -230,8 +230,8 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField ctxLogin;
     private javax.swing.JPasswordField ctxPassword;
+    private javax.swing.JTextField ctxnomeUser;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
