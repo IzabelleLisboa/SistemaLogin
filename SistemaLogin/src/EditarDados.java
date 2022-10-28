@@ -493,7 +493,7 @@ private boolean validaCampoNumerico(String valor) {
 
        
     }
-    
+
     
     
   /*  int cont=0;
@@ -507,7 +507,7 @@ private boolean validaCampoNumerico(String valor) {
                 cont++;
             }   } catch (IOException ex) {
             Logger.getLogger(EditarDados.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    }
     ctxEditPassword.setText(lista[0]);
     ctxEditNome.setText(lista[1]);    
     ctxEditEmail.setText(lista[2]); 
@@ -515,6 +515,6 @@ private boolean validaCampoNumerico(String valor) {
     ctxEditNif.setText(lista[4]);
     ctxEditLogin2.setText(lista[5]);
     ctxEditTelefone.setText(lista[6]);*/
-    }
+}
 }
 

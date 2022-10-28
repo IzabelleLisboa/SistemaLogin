@@ -1,3 +1,12 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+import static sun.security.jgss.GSSUtil.login;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,6 +23,7 @@ public class Tabela extends javax.swing.JFrame {
      */
     public Tabela() {
         initComponents();
+        preencheTabela();
     }
 
     /**
@@ -32,15 +42,20 @@ public class Tabela extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
+                "id", "nome", "email", "morada", "telefone", "nif", "login", "password"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -49,8 +64,8 @@ public class Tabela extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 590, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,6 +112,32 @@ public class Tabela extends javax.swing.JFrame {
             }
         });
     }
+    public void preencheTabela () {
+       
+      
+    try{
+          PreparedStatement ps=null;
+        ResultSet rs=null;
+        int contador=0;
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+   Connection conexao = LigaBD.ligacao();
+   ps = conexao.prepareStatement("Select * from utilizador");
+        rs= ps.executeQuery();
+        rs.first();
+       
+     int rowCount=dtm.getRowCount();
+     for (int i = rowCount - 1; i>=0; i--){
+         dtm.removeRow(i);
+    }
+     do{
+         dtm.addRow(new Object []{rs.getInt("idUtilizador"),rs.getString("nome"),rs.getString("email"),rs.getString("morada"),rs.getInt("telefone"),rs.getString("nif"),rs.getString("login"),rs.getString("password")});
+     }while(rs.next());
+    }catch(Exception e){
+    e.printStackTrace();
+}
+       
+}     
+        
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

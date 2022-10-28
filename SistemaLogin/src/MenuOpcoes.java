@@ -127,13 +127,16 @@ public class MenuOpcoes extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //Mostrar utilizadores Registrados
-        File ficheiro = new File("C:\\Users\\ilisboa\\Desktop\\SistemaLogin\\SistemaLogin\\SistemaLogin");
+        /*File ficheiro = new File("C:\\Users\\ilisboa\\Desktop\\SistemaLogin\\SistemaLogin\\SistemaLogin");
         File [] lista = ficheiro.listFiles();
         System.out.println(">>>>>>Lista Ficheiros<<<<<<");
         for(int x=0;x<lista.length;x++){
             System.out.println(lista[x].getName());
         
-    }
+    }*/
+     Tabela tb = new Tabela();
+      this.setVisible(false);
+      tb.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
