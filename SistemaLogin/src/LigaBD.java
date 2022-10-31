@@ -65,5 +65,15 @@ public class LigaBD {
         }
     
     }
-   
+
+    static void remove(int p) {
+  try {
+            PreparedStatement ps=null;
+            Connection conexao = LigaBD.ligacao();
+            ps = conexao.prepareStatement("DELETE FROM utilizador WHERE login ='" +Login.nomeUser+"'");
+            ps.executeUpdate();
+            System.out.println("Removed User :" + Login.nomeUser);
+            System.out.println("DELETADO!!");
+        } catch (SQLException e) {System.out.println("Error: " + e.getMessage()); }
+}
 }
